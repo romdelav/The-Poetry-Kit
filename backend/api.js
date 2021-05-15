@@ -16,3 +16,13 @@ app.use(express.urlencoded({ extended: true }));
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
+
+app.route('/constrained-poems')
+    .get((req, res) =>
+        res.send(JSON.stringify(getRandomConstraint(), null, 2))
+    );
+
+function getRandomConstraint() {
+    const randomConstraint = db.prepare('SELECT * FROM Constraint').all();
+    return randomConstraint;
+}
