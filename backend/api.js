@@ -23,6 +23,6 @@ app.route('/constrained-poems')
     );
 
 function getRandomConstraint() {
-    const randomConstraint = db.prepare('SELECT * FROM Constraint').all();
+    const randomConstraint = db.prepare('SELECT * FROM Constraint ORDER BY RANDOM() LIMIT 1').all();
     return randomConstraint;
 }
