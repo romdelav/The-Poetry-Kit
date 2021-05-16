@@ -23,6 +23,21 @@ app.route('/constrained-poems')
     );
 
 function getRandomConstraint() {
-    const randomConstraint = db.prepare('SELECT * FROM Constraints ORDER BY RANDOM() LIMIT 1').all();
+    const randomConstraint = db.prepare('SELECT * FROM Constraints ORDER BY RANDOM() LIMIT 1').get();
     return randomConstraint;
+}
+
+function getHaikuLines() {
+    const haikuLines = { haikuLine1: '', haikuLine2: '', haikuLine3: '' };
+
+    const line1 = db.prepare(`SELECT * FROM HaikuLine WHERE lineNumber = 1 ORDER BY RANDOM() LIMIT 3`).all();
+    haikuLines.haikuLine1 = line1.haikuLine1;
+
+    const line2 = db.prepare(`SELECT * FROM HaikuLine WHERE lineNumber = 2 ORDER BY RANDOM() LIMIT 3`).all();
+    haikuLines.haikuLine2 = line2.haikuLine2;
+
+    const line3 = db.prepare(`SELECT * FROM HaikuLine WHERE lineNumber = 3 ORDER BY RANDOM() LIMIT 3`).all();
+    haikuLines.haikuLine3 = line3.haikuLine3;
+
+    return haikuLines;
 }
