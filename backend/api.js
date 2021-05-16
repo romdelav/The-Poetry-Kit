@@ -17,6 +17,11 @@ app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
 
+app.route('/haikus')
+    .get((req, res) =>
+        res.send(JSON.stringify(getHaikuLines(), null, 2))
+    );
+
 app.route('/constrained-poems')
     .get((req, res) =>
         res.send(JSON.stringify(getRandomConstraint(), null, 2))
