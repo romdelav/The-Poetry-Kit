@@ -17,17 +17,17 @@ app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
 
-app.route('/create-haiku')
+app.route('/haikus/create')
     .get((req, res) =>
         res.send(JSON.stringify(getHaikuThemes(), null, 2))
     );
 
-app.route('/create-haiku/:themeID')
+app.route('/haikus/create/:themeID')
     .get((req, res) =>
         res.send(JSON.stringify(getHaikuLines(), null, 2))
     );
 
-app.route('/create-constrained-poem')
+app.route('/constrained-poems/create')
     .get((req, res) =>
         res.send(JSON.stringify(getRandomConstraint(), null, 2))
     );
