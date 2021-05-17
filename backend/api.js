@@ -38,7 +38,7 @@ function getHaikuThemes() {
 }
 
 function getHaikuLines(themeID) {
-    const haikuLines = { haikuLine1: '', haikuLine2: '', haikuLine3: '' };
+    const haikuLines = { haikuLine1: [], haikuLine2: [], haikuLine3: [] };
 
     const line1 = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 1 ORDER BY RANDOM() LIMIT 3`).all();
     haikuLines.haikuLine1 = line1.haikuLine1;
