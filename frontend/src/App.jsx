@@ -3,6 +3,7 @@ import './App.css';
 import Home from './pages/Home';
 import HaikuHistory from './pages/HaikuHistory';
 import HaikuTheme from './pages/HaikuTheme';
+import ConstrainedPoemRule from './pages/ConstrainedPoemRule';
 import NavBar from './components/navbar';
 import NotFound from './components/notfound';
 
@@ -17,7 +18,7 @@ function App() {
                         <Route path="/haikus/history" component={HaikuHistory} />
                         <Route path="/haikus/create" component={HaikuTheme} />
                         <Route path="/exquisite-corpses" />
-                        <Route path="/constrained-poems" />
+                        <Route path="/constrained-poems/create" component={ConstrainedPoemRule} />
                         <Route component={NotFound} />
                     </Switch>
                     
