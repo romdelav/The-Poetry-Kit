@@ -53,6 +53,6 @@ function getHaikuLines(themeID) {
 }
 
 function getRandomConstraint() {
-    const randomConstraint = db.prepare('SELECT * FROM Constraints ORDER BY RANDOM() LIMIT 1').get();
+    const randomConstraint = db.prepare('SELECT description FROM Rule ORDER BY RANDOM() LIMIT 1').get();
     return randomConstraint;
 }
