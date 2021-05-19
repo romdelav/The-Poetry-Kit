@@ -21,13 +21,21 @@ const HaikuTheme = () => {
     return(    
         <>
         <br/><br/><br/><br/>
-        Select a theme
+
+        <header>
+            <h1>Select a theme</h1>
+        </header>
+        
         <br/><br/>
-        {themeInfo.map((thistheme, key) => 
-        <div key={key}>{thistheme.theme}</div>)}
+
+        <section>
+            {themeInfo.map((thistheme, key) => 
+            <div key={key}>
+                {thistheme.theme}
+            </div>)}
+        </section>
         </>
     )
 }
-
 
 export default HaikuTheme;
