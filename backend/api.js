@@ -7,7 +7,7 @@ const dbConnection = path.join(__dirname + '/database/Poetry_Kit.db');
 console.log(dbConnection);
 const db = require('better-sqlite3')(dbConnection, { verbose: console.log });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
@@ -33,7 +33,7 @@ app.route('/constrained-poems/create')
     );
 
 function getHaikuThemes() {
-    const haikuThemes = db.prepare('SELECT * FROM Theme').all();
+    const haikuThemes = db.prepare('SELECT * FROM Themes').all();
     return haikuThemes;
 }
 
