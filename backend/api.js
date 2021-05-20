@@ -30,7 +30,16 @@ app.route('/haikus/create/:themeID')
 app.route('/constrained-poems/create')
     .get((req, res) =>
         res.send(JSON.stringify(getRandomConstraint(), null, 2))
-    );
+    )
+    .post((req, res) => {
+        console.log(req.body);
+
+        var text = req.body.text;
+        var description = req.body.description;
+
+        var statement = db.prepare(`INSERT INTO Poem (text, ruleID, typeID) VALUES (?, (SELECT ruleID FROM Rule WHERE description = ?), ?)`);
+        statement.run(text, description, 3);
+    });
 
 function getHaikuThemes() {
     const haikuThemes = db.prepare('SELECT * FROM Themes').all();
