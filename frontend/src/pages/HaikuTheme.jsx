@@ -20,19 +20,19 @@ const HaikuTheme = () => {
 
     return(    
         <>
-        <br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/>
 
         <header>
-            <h1>Select a theme</h1>
+            <div className="header-style">Select a theme</div>
         </header>
         
-        <br/><br/>
+        <br/><br/><br/><br/>
 
-        <section>
+        <section style={{textAlign: 'center'}}>
             {themeInfo.map((thistheme, key) => 
-            <div key={key}>
+            <span key={key} value={thistheme.themeID} className="theme-style">
                 {thistheme.theme}
-            </div>)}
+            </span>)}
         </section>
         </>
     )
