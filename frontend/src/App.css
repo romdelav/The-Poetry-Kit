@@ -96,3 +96,60 @@ a:hover,
 a:active {
     color: inherit;
 }
+
+.rule-style {
+    color: rgb(87, 87, 87);
+    box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    text-align: center;
+    padding: 1%;
+    margin: auto;
+    width: 15%
+}
+
+textarea {
+    border: none;
+    box-shadow: inset 9px 9px 16px rgb(163, 177, 198, 0.6), inset -9px -9px 16px rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    background-color: transparent;
+    resize: none;
+    width: 750px;
+    height: 750px;
+    padding: 1%;
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+}
+
+.input-field {
+    text-align: center;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.header-style {
+    color: rgb(87, 87, 87);
+    text-align: center;
+    box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    margin: auto;
+    width: 15%;
+    padding: 1%;
+    font-size: 1.5rem;
+}
+
+.theme-style {
+    color: rgb(87, 87, 87);
+    text-align: center;
+    box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 15px;
+    margin: 1%;
+}
+
+.theme-style:hover {
+    box-shadow: inset 9px 9px 16px rgb(163, 177, 198, 0.6), inset -9px -9px 16px rgba(255, 255, 255, 0.5);
+    background-color: #aac4e9;
+    transition: 0.7s
+}
