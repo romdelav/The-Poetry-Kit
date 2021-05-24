@@ -24,7 +24,7 @@ app.route('/haikus/create')
 
 app.route('/haikus/create/:themeID')
     .get((req, res) =>
-        res.send(JSON.stringify(getHaikuLines(), null, 2))
+        res.send(JSON.stringify(getHaikuLines(req.params.themeID), null, 2))
     );
 
 app.route('/constrained-poems/create')
@@ -50,13 +50,13 @@ function getHaikuLines(themeID) {
     const haikuLines = { haikuLine1: [], haikuLine2: [], haikuLine3: [] };
 
     const line1 = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 1 ORDER BY RANDOM() LIMIT 3`).all();
-    haikuLines.haikuLine1 = line1.haikuLine1;
+    haikuLines.haikuLine1 = line1;
 
     const line2 = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 2 ORDER BY RANDOM() LIMIT 3`).all();
-    haikuLines.haikuLine2 = line2.haikuLine2;
+    haikuLines.haikuLine2 = line2;
 
-    const line3 = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 3 ORDER BY RANDOM() LIMIT 3`).all();
-    haikuLines.haikuLine3 = line3.haikuLine3;
+    const line3 = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 1 ORDER BY RANDOM() LIMIT 3`).all();
+    haikuLines.haikuLine3 = line3;
 
     return haikuLines;
 }
