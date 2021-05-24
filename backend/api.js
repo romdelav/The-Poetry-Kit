@@ -49,13 +49,16 @@ function getHaikuThemes() {
 function getHaikuLines(themeID) {
     const haikuLines = { haikuLine1: [], haikuLine2: [], haikuLine3: [] };
 
-    const line1 = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 1 ORDER BY RANDOM() LIMIT 3`).all();
+    const line1Db = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 1 ORDER BY RANDOM() LIMIT 3`).all();
+    var line1 = line1Db;
     haikuLines.haikuLine1 = line1;
 
-    const line2 = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 2 ORDER BY RANDOM() LIMIT 3`).all();
+    const line2Db = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 2 ORDER BY RANDOM() LIMIT 3`).all();
+    var line2 = line2Db;
     haikuLines.haikuLine2 = line2;
 
-    const line3 = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 1 ORDER BY RANDOM() LIMIT 3`).all();
+    const line3Db = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 3 ORDER BY RANDOM() LIMIT 3`).all();
+    var line3 = line3Db;
     haikuLines.haikuLine3 = line3;
 
     return haikuLines;
