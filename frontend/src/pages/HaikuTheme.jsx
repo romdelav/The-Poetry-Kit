@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const HaikuTheme = () => {
 
@@ -29,10 +30,8 @@ const HaikuTheme = () => {
         <br/><br/><br/><br/>
 
         <section style={{textAlign: 'center'}}>
-            {themeInfo.map((thistheme, key) => 
-            <span key={key} value={thistheme.themeID} className="theme-style">
-                {thistheme.theme}
-            </span>)}
+            {themeInfo.map((theme) => 
+            <Link to={`/haikus/create/${theme.themeID}`} key={theme.themeID} className="theme-style">{theme.theme}</Link>)}
         </section>
         </>
     )
