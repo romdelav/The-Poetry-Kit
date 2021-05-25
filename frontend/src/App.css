@@ -120,10 +120,6 @@ textarea {
     font-size: 1rem;
 }
 
-.input-field {
-    text-align: center;
-}
-
 textarea:focus {
     outline: none;
 }
