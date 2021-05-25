@@ -17,8 +17,8 @@ function App() {
                     <Switch>
                         <Route path="/" component={Home} exact />
                         <Route path="/haikus/history" component={HaikuHistory} />
-                        <Route path="/haikus/create" component={HaikuTheme} />
                         <Route path="/haikus/create/:themeID" component={HaikuLine} />
+                        <Route path="/haikus/create" component={HaikuTheme} />
                         <Route path="/exquisite-corpses" />
                         <Route path="/constrained-poems/create" component={ConstrainedPoemRule} />
                         <Route component={NotFound} />
