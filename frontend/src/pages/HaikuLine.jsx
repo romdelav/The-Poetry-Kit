@@ -22,24 +22,29 @@ const HaikuLine = ({match}) => {
     
     return(   
         <>
-         <br/><br/><br/>
+        <br/><br/><br/>
+        <form>
             <h2>Select the first line</h2>
             {haikuLine.haikuLine1.map((lines) => 
-            <div key={lines.haikuLineID}>
-                <div>{lines.line}</div>
+            <div>
+                <input type="checkbox" key={lines.haikuLineID} value={lines.haikuLineID} />
+                <label>{lines.line}</label>
             </div>)} 
             <br/>
             <h2>Select the second line</h2>
             {haikuLine.haikuLine2.map((lines) => 
-            <div key={lines.haikuLineID}>
-                <div>{lines.line}</div>
+            <div>
+                <input type="checkbox" key={lines.haikuLineID} value={lines.haikuLineID} />
+                <label>{lines.line}</label>
             </div>)} 
             <br/>
             <h2>Select the third line</h2>
             {haikuLine.haikuLine3.map((lines) => 
-            <div key={lines.haikuLineID}>
-                <div>{lines.line}</div>
-            </div>)} 
+            <div>
+                <input type="checkbox" key={lines.haikuLineID} value={lines.haikuLineID} />
+                <label>{lines.line}</label>
+            </div>)}  
+        </form>
         </>
     )
 }
