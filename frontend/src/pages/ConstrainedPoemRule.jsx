@@ -1,29 +1,45 @@
 import { React, useState, useEffect } from 'react';
 
-const ConstrainedPoemRule = () => {
+const ConstrainedPoemRule = ({setPoem}) => {
 
     const [ruleInfo, setRuleInfo] = useState([]);
     
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:4000/constrained-poems/create', {
+            const result = await fetch('http://localhost:4000/constrained-poems/create', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-            const body = await response.json();
+            const body = await result.json();
             setRuleInfo(body);
         }
         fetchData();
     }, [])
+
+
+
+
+
+    const [text, setText] = useState('');
+
+    const postPoem = async() => {
+        const result = await fetch('http://localhost:4000/constrained-poems/create', {
+            method: 'POST',
+            body: JSON.stringify({text}),
+            headers: { 'Content-Type': 'application/json'}
+        });
+        const body = await result.json();
+        setPoem(body);
+        setText('');
+    }
 
     return(    
         <>
         <br/><br/><br/><br/><br/><br/>
 
         <section>
-            
             {Object.values(ruleInfo).map((rule, key) =>
             <div key={key} className="rule-style">
                 <h2>Rule</h2>
@@ -33,10 +49,11 @@ const ConstrainedPoemRule = () => {
         </section> 
 
         <br/><br/><br/><br/>
-
-        <section className="input-field">
-            <textarea placeholder="Your poem..."></textarea>
-        </section>    
+        <form style={{textAlign:'center'}}>
+            <textarea placeholder="Your poem..." value={text} onChange={(event) => setText(event.target.value)}></textarea>
+            <br/>
+            <input type="submit" onClick={() => postPoem()}/>
+        </form> 
         </>
     )
 }
