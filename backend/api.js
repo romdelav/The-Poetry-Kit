@@ -33,12 +33,10 @@ app.route('/constrained-poems/create')
     )
     .post((req, res) => {
         console.log(req.body);
-
         var text = req.body.text;
-        var description = req.body.description;
 
-        var statement = db.prepare(`INSERT INTO Poem (text, ruleID, typeID) VALUES (?, (SELECT ruleID FROM Rule WHERE description = ?), ?)`);
-        statement.run(text, description, 3);
+        var statement = db.prepare(`INSERT INTO Poem (text, typeID) VALUES (?, ?)`);
+        statement.run(text, 3);
     });
 
 function getHaikuThemes() {
@@ -49,16 +47,13 @@ function getHaikuThemes() {
 function getHaikuLines(themeID) {
     const haikuLines = { haikuLine1: [], haikuLine2: [], haikuLine3: [] };
 
-    const line1Db = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 1 ORDER BY RANDOM() LIMIT 3`).all();
-    var line1 = line1Db;
+    const line1 = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 1 ORDER BY RANDOM() LIMIT 3`).all();
     haikuLines.haikuLine1 = line1;
 
-    const line2Db = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 2 ORDER BY RANDOM() LIMIT 3`).all();
-    var line2 = line2Db;
+    const line2 = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 2 ORDER BY RANDOM() LIMIT 3`).all();
     haikuLines.haikuLine2 = line2;
 
-    const line3Db = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 3 ORDER BY RANDOM() LIMIT 3`).all();
-    var line3 = line3Db;
+    const line3 = db.prepare(`SELECT * FROM HaikuLine WHERE themeID = ${themeID} AND lineNumber = 3 ORDER BY RANDOM() LIMIT 3`).all();
     haikuLines.haikuLine3 = line3;
 
     return haikuLines;
