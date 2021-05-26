@@ -34,9 +34,11 @@ app.route('/constrained-poems/create')
     .post((req, res) => {
         console.log(req.body);
         var text = req.body.text;
+        var description = req.body.description;
+        var typeID = 3;
 
-        var statement = db.prepare(`INSERT INTO Poem (text, typeID) VALUES (?, ?)`);
-        statement.run(text, 3);
+        var statement = db.prepare(`INSERT INTO Poem (text, ruleID, typeID) VALUES (?, (SELECT ruleID FROM Rule WHERE description = ?), ?)`);
+        statement.run(text, description, typeID);
     });
 
 function getHaikuThemes() {
