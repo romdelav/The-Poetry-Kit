@@ -17,6 +17,12 @@ app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
 
+app.route('/haikus/history')
+    .get((req, res) =>
+        res.send(JSON.stringify(getHaikuHistory(), null, 2))
+    );
+
+
 app.route('/haikus/create')
     .get((req, res) =>
         res.send(JSON.stringify(getHaikuThemes(), null, 2))
@@ -40,6 +46,11 @@ app.route('/constrained-poems/create')
         var statement = db.prepare(`INSERT INTO Poem (text, ruleID, typeID) VALUES (?, (SELECT ruleID FROM Rule WHERE description = ?), ?)`);
         statement.run(text, description, typeID);
     });
+
+function getHaikuHistory() {
+    const haikuHistory = db.prepare('SELECT * FROM History WHERE historyID = 1').all();
+    return haikuHistory;
+}
 
 function getHaikuThemes() {
     const haikuThemes = db.prepare('SELECT * FROM Themes').all();
