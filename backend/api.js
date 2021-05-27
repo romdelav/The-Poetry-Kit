@@ -34,8 +34,8 @@ app.route('/constrained-poems/create')
     .post((req, res) => {
         console.log(req.body);
         var text = req.body.text;
-        var description = req.body.description;
-        var typeID = 3;
+        var description = req.body.description.description;
+        var typeID = req.body.typeID;
 
         var statement = db.prepare(`INSERT INTO Poem (text, ruleID, typeID) VALUES (?, (SELECT ruleID FROM Rule WHERE description = ?), ?)`);
         statement.run(text, description, typeID);
