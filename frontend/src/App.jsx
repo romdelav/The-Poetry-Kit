@@ -7,6 +7,7 @@ import HaikuLine from './pages/HaikuLine';
 import ConstrainedPoemRule from './pages/ConstrainedPoemRule';
 import NavBar from './components/navbar';
 import NotFound from './components/notfound';
+import ExquisiteCorpseHistory from './pages/ExquisiteCorpseHistory';
 
 function App() {
     return ( 
@@ -19,7 +20,7 @@ function App() {
                         <Route path="/haikus/history" component={HaikuHistory} />
                         <Route path="/haikus/create/:themeID" component={HaikuLine} />
                         <Route path="/haikus/create" component={HaikuTheme} />
-                        <Route path="/exquisite-corpses" />
+                        <Route path="/exquisite-corpses/history" component={ExquisiteCorpseHistory} />
                         <Route path="/constrained-poems/create" component={ConstrainedPoemRule} />
                         <Route component={NotFound} />
                     </Switch>
