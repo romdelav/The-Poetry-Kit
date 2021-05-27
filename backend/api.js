@@ -37,6 +37,11 @@ app.route('/exquisite-corpses/history')
         res.send(JSON.stringify(getExquisiteCorpseHistory(), null, 2))
     );
 
+app.route('/constrained-poems/history')
+    .get((req, res) =>
+        res.send(JSON.stringify(getConstrainedPoemHistory(), null, 2))
+    );
+
 app.route('/constrained-poems/create')
     .get((req, res) =>
         res.send(JSON.stringify(getRandomConstraint(), null, 2))
@@ -78,6 +83,11 @@ function getHaikuLines(themeID) {
 
 function getExquisiteCorpseHistory() {
     const haikuHistory = db.prepare('SELECT * FROM History WHERE historyID = 2').all();
+    return haikuHistory;
+}
+
+function getConstrainedPoemHistory() {
+    const haikuHistory = db.prepare('SELECT * FROM History WHERE historyID = 3').all();
     return haikuHistory;
 }
 
