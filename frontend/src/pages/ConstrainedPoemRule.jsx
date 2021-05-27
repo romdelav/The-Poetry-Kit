@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 
 const ConstrainedPoemRule = ({setPoem}) => {
 
-    const [ruleInfo, setRuleInfo] = useState([]);
+    const [description, setDescription] = useState([]);
     
     useEffect(() => {
         const fetchData = async () => {
@@ -13,7 +13,7 @@ const ConstrainedPoemRule = ({setPoem}) => {
                 }
             });
             const body = await result.json();
-            setRuleInfo(body);
+            setDescription(body);
         }
         fetchData();
     }, [])
@@ -23,11 +23,12 @@ const ConstrainedPoemRule = ({setPoem}) => {
 
 
     const [text, setText] = useState('');
+    const typeID = 3;
 
     const postPoem = async() => {
         const result = await fetch('http://localhost:4000/constrained-poems/create', {
             method: 'POST',
-            body: JSON.stringify({text}),
+            body: JSON.stringify({text, description, typeID}),
             headers: { 'Content-Type': 'application/json'}
         });
         const body = await result.json();
@@ -40,7 +41,7 @@ const ConstrainedPoemRule = ({setPoem}) => {
         <br/><br/><br/><br/><br/><br/>
 
         <section>
-            {Object.values(ruleInfo).map((rule, key) =>
+            {Object.values(description).map((rule, key) =>
             <div key={key} className="rule-style">
                 <h2>Rule</h2>
                 {rule}
