@@ -50,10 +50,9 @@ app.route('/constrained-poems/create')
         console.log(req.body);
         var text = req.body.text;
         var description = req.body.description.description;
-        var typeID = req.body.typeID;
 
         var statement = db.prepare(`INSERT INTO Poem (text, ruleID, typeID) VALUES (?, (SELECT ruleID FROM Rule WHERE description = ?), ?)`);
-        statement.run(text, description, typeID);
+        statement.run(text, description, 3);
     });
 
 function getHaikuHistory() {
