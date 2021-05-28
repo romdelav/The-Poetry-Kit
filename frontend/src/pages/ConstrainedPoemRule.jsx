@@ -18,17 +18,12 @@ const ConstrainedPoemRule = ({setPoem}) => {
         fetchData();
     }, [])
 
-
-
-
-
     const [text, setText] = useState('');
-    const typeID = 3;
 
     const postPoem = async() => {
         const result = await fetch('http://localhost:4000/constrained-poems/create', {
             method: 'POST',
-            body: JSON.stringify({text, description, typeID}),
+            body: JSON.stringify({text, description}),
             headers: { 'Content-Type': 'application/json'}
         });
         const body = await result.json();
