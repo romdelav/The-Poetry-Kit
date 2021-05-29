@@ -21,6 +21,10 @@ app.route('/haikus/history')
     .get((req, res) =>
         res.send(JSON.stringify(getHaikuHistory(), null, 2))
     );
+app.route('haikus/examples')
+    .get((req, res) =>
+        res.send(JSON.stringify(getHaikus(), null, 2))
+    );
 
 app.route('/haikus/create')
     .get((req, res) =>
@@ -58,6 +62,11 @@ app.route('/constrained-poems/create')
 function getHaikuHistory() {
     const haikuHistory = db.prepare('SELECT * FROM History WHERE historyID = 1').all();
     return haikuHistory;
+}
+
+function getHaikus() {
+    const haikus = db.prepare('SELECT * FROM Poem WHERE typeID = 1').all();
+    return haikus;
 }
 
 function getHaikuThemes() {
