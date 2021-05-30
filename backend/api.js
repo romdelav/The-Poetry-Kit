@@ -21,9 +21,10 @@ app.route('/haikus/history')
     .get((req, res) =>
         res.send(JSON.stringify(getHaikuHistory(), null, 2))
     );
-app.route('haikus/examples')
+
+app.route('/haikus/my-haiku/:poemID')
     .get((req, res) =>
-        res.send(JSON.stringify(getHaikus(), null, 2))
+        res.send(JSON.stringify(getHaiku(req.params.poemID), null, 2))
     );
 
 app.route('/haikus/create')
@@ -64,9 +65,9 @@ function getHaikuHistory() {
     return haikuHistory;
 }
 
-function getHaikus() {
-    const haikus = db.prepare('SELECT * FROM Poem WHERE typeID = 1').all();
-    return haikus;
+function getHaiku(poemID) {
+    const haiku = db.prepare(`SELECT line FROM HaikuLine JOIN Poem_HaikuLine ON HaikuLine.haikuLineID = Poem_HaikuLine.haikuLineID JOIN Poem ON Poem_HaikuLine.poemID = Poem.poemID WHERE typeID = 1 AND Poem.poemID = ${poemID}`).all();
+    return haiku;
 }
 
 function getHaikuThemes() {
