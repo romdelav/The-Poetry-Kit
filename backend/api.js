@@ -35,7 +35,36 @@ app.route('/haikus/create')
 app.route('/haikus/create/:themeID')
     .get((req, res) =>
         res.send(JSON.stringify(getHaikuLines(req.params.themeID), null, 2))
-    );
+    )
+    .post((req, res) => {
+        console.log(req.body);
+        var title = req.body.title;
+        var line1 = req.body.line1;
+        var line2 = req.body.line2;
+        var line3 = req.body.line3;
+        var themeID = req.params.themeID
+
+        var statement1 = db.prepare(`INSERT INTO Poem (title, typeID) VALUES (?, ?)`);
+        statement1.run(title, 1);
+
+        var statement2 = db.prepare(`INSERT INTO Poem-Haikuline (poemID, lineID) VALUES((SELECT poemID FROM Poem WHERE title = ?), (SELECT haikuLineID FROM haikuLine WHERE line = ?))`);
+        statement2.run(title, line1)
+
+        var statement3 = db.prepare(`INSERT INTO Poem-Haikuline (poemID, lineID) VALUES((SELECT poemID FROM Poem WHERE title = ?), (SELECT haikuLineID FROM haikuLine WHERE line = ?))`);
+        statement3.run(title, line2)
+
+        var statement4 = db.prepare(`INSERT INTO Poem-Haikuline (poemID, lineID) VALUES((SELECT poemID FROM Poem WHERE title = ?), (SELECT haikuLineID FROM haikuLine WHERE line = ?))`);
+        statement4.run(title, line3)
+
+        var statement5 = db.prepare(`INSERT INTO HaikuLine(line, lineNumber, themeID) VALUES (?, ?, ?)`);
+        statement5.run(line1, 1, themeID);
+
+        var statement6 = db.prepare(`INSERT INTO HaikuLine(line, lineNumber, themeID) VALUES (?, ?, ?)`);
+        statement6.run(line2, 2, themeID);
+
+        var statement7 = db.prepare(`INSERT INTO HaikuLine(line, lineNumber, themeID) VALUES (?, ?, ?)`);
+        statement7.run(line3, 3, themeID);
+    });
 
 app.route('/exquisite-corpses/history')
     .get((req, res) =>
