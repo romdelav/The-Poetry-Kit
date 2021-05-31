@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 
 const HaikuLine = ({match}) => {
 
@@ -19,31 +19,44 @@ const HaikuLine = ({match}) => {
         }
         fetchData();
     }, [themeID]) 
-    
+
+    const [title, setTitle] = useState('');
+    const [line1, setLine1] = useState();
+    const [line2, setLine2] = useState();
+    const [line3, setLine3] = useState();
+
+    const postHaiku = async() => {
+        //TODO
+    }
+
     return(   
         <>
         <br/><br/><br/>
         <form>
+            <label>Title</label>
+            <input type="text" onChange={(event) => setTitle(event.target.value)}/>
+            <br/>
             <h2>Select the first line</h2>
             {haikuLine.haikuLine1.map((lines) => 
             <div>
-                <input type="checkbox" key={lines.haikuLineID} value={lines.haikuLineID} />
+                <input type="radio" name="line1" key={lines.haikuLineID} value={lines.haikuLineID} onChange={(event) => setLine1(event.target.value)} />
                 <label>{lines.line}</label>
             </div>)} 
             <br/>
             <h2>Select the second line</h2>
             {haikuLine.haikuLine2.map((lines) => 
             <div>
-                <input type="checkbox" key={lines.haikuLineID} value={lines.haikuLineID} />
+                <input type="radio" name="line2" key={lines.haikuLineID} value={lines.haikuLineID} onChange={(event) => setLine2(event.target.value)}/>
                 <label>{lines.line}</label>
             </div>)} 
             <br/>
             <h2>Select the third line</h2>
             {haikuLine.haikuLine3.map((lines) => 
             <div>
-                <input type="checkbox" key={lines.haikuLineID} value={lines.haikuLineID} />
+                <input type="radio" name="line3" key={lines.haikuLineID} value={lines.haikuLineID} onChange={(event) => setLine3(event.target.value)}/>
                 <label>{lines.line}</label>
             </div>)}  
+            <input type="submit" onClick={() => postHaiku()}/>
         </form>
         </>
     )
