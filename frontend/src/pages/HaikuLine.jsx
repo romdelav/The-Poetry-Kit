@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 
-const HaikuLine = ({match, setPoem}) => {
+const HaikuLine = ({match, setHaiku}) => {
 
     const themeID = match.params.themeID;
     
@@ -26,13 +26,13 @@ const HaikuLine = ({match, setPoem}) => {
     const [line3, setLine3] = useState();
 
     const postHaiku = async() => {
-        const result = await fetch('http://localhost:4000/constrained-poems/create', {
+        const result = await fetch(`http://localhost:4000/haikus/create/${themeID}`, {
             method: 'POST',
             body: JSON.stringify({title, line1, line2, line3}),
             headers: { 'Content-Type': 'application/json'}
         });
         const body = await result.json();
-        setPoem(body);
+        setHaiku(body);
         setTitle('');
         setLine1();
         setLine2();
