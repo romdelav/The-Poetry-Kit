@@ -47,13 +47,13 @@ app.route('/haikus/create/:themeID')
         var statement1 = db.prepare(`INSERT INTO Poem (title, typeID) VALUES (?, ?)`);
         statement1.run(title, 1);
 
-        var statement2 = db.prepare(`INSERT INTO Poem_Haikuline (poemID, lineID) VALUES((SELECT poemID FROM Poem WHERE title = ?), (SELECT haikuLineID FROM haikuLine WHERE line = ?))`);
+        var statement2 = db.prepare(`INSERT INTO Poem_Haikuline (poemID, haikuLineID) VALUES((SELECT poemID FROM Poem WHERE title = ?), (SELECT haikuLineID FROM haikuLine WHERE line = ?))`);
         statement2.run(title, line1)
 
-        var statement3 = db.prepare(`INSERT INTO Poem_Haikuline (poemID, lineID) VALUES((SELECT poemID FROM Poem WHERE title = ?), (SELECT haikuLineID FROM haikuLine WHERE line = ?))`);
+        var statement3 = db.prepare(`INSERT INTO Poem_Haikuline (poemID, haikuLineID) VALUES((SELECT poemID FROM Poem WHERE title = ?), (SELECT haikuLineID FROM haikuLine WHERE line = ?))`);
         statement3.run(title, line2)
 
-        var statement4 = db.prepare(`INSERT INTO Poem_Haikuline (poemID, lineID) VALUES((SELECT poemID FROM Poem WHERE title = ?), (SELECT haikuLineID FROM haikuLine WHERE line = ?))`);
+        var statement4 = db.prepare(`INSERT INTO Poem_Haikuline (poemID, haikuLineID) VALUES((SELECT poemID FROM Poem WHERE title = ?), (SELECT haikuLineID FROM haikuLine WHERE line = ?))`);
         statement4.run(title, line3)
 
         var statement5 = db.prepare(`INSERT INTO HaikuLine(line, lineNumber, themeID) VALUES (?, ?, ?)`);
