@@ -9,6 +9,7 @@ import ConstrainedPoemRule from './pages/ConstrainedPoemRule';
 import NavBar from './components/navbar';
 import NotFound from './components/notfound';
 import ExquisiteCorpseHistory from './pages/ExquisiteCorpseHistory';
+import ExquisiteCorpseSelection from './pages/ExquisiteCorpseSelection';
 
 function App() {
     return ( 
@@ -22,6 +23,7 @@ function App() {
                         <Route path="/haikus/create/:themeID" component={HaikuLine} />
                         <Route path="/haikus/create" component={HaikuTheme} />
                         <Route path="/exquisite-corpses/history" component={ExquisiteCorpseHistory} />
+                        <Route path="/exquisite-corpses/select" component={ExquisiteCorpseSelection} />
                         <Route path="/constrained-poems/history" component={ConstrainedPoemHistory} />
                         <Route path="/constrained-poems/create" component={ConstrainedPoemRule} />
                         <Route component={NotFound} />
