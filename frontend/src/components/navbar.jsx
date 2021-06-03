@@ -23,7 +23,7 @@ const NavBar = () => (
                 <div className="dropdown-content">
                     <Link to="/exquisite-corpses/history">History</Link>
                     <Link to="/exquisite-corpses/popular">Popular Exquisite Corpses</Link>
-                    <Link to="/exquisite-corpses/create">Create an Exquisite Corpse</Link>
+                    <Link to="/exquisite-corpses/select">Contribute to an Exquisite Corpse</Link>
                 </div>
             </li>
             <li className="navbar">
