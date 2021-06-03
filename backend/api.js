@@ -29,7 +29,7 @@ app.route('/haikus/my-haiku/:poemID')
 
 app.route('/haikus/create')
     .get((req, res) =>
-        res.send(JSON.stringify(getHaikuThemes(), null, 2))
+        res.send(JSON.stringify(getThemes(), null, 2))
     );
 
 app.route('/haikus/create/:themeID')
@@ -71,6 +71,11 @@ app.route('/exquisite-corpses/history')
         res.send(JSON.stringify(getExquisiteCorpseHistory(), null, 2))
     );
 
+app.route('/exquisite-corpses/')
+    .get((req, res) =>
+        res.send(JSON.stringify(getTitles(), null, 2))
+    );
+
 app.route('/constrained-poems/history')
     .get((req, res) =>
         res.send(JSON.stringify(getConstrainedPoemHistory(), null, 2))
@@ -99,9 +104,14 @@ function getHaiku(poemID) {
     return haiku;
 }
 
-function getHaikuThemes() {
-    const haikuThemes = db.prepare('SELECT * FROM Themes').all();
-    return haikuThemes;
+function getThemes() {
+    const titles = db.prepare('SELECT * FROM Themes').all();
+    return titles;
+}
+
+function getTitles() {
+    const themes = db.prepare('SELECT title FROM Poem WHERE typeID= 2').all();
+    return themes;
 }
 
 function getHaikuLines(themeID) {
