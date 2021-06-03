@@ -71,7 +71,7 @@ app.route('/exquisite-corpses/history')
         res.send(JSON.stringify(getExquisiteCorpseHistory(), null, 2))
     );
 
-app.route('/exquisite-corpses/')
+app.route('/exquisite-corpses/select')
     .get((req, res) =>
         res.send(JSON.stringify(getTitles(), null, 2))
     );
@@ -110,7 +110,7 @@ function getThemes() {
 }
 
 function getTitles() {
-    const themes = db.prepare('SELECT title FROM Poem WHERE typeID= 2').all();
+    const themes = db.prepare('SELECT title FROM Poem WHERE typeID = 2').all();
     return themes;
 }
 
