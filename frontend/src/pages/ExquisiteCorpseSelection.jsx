@@ -6,7 +6,7 @@ const ExquisiteCorpseSelection = () => {
     
     useEffect(() => {
         const fetchData = async () => {
-            const result = await fetch('http://localhost:4000/exquisite-corpses', {
+            const result = await fetch(`http://localhost:4000/exquisite-corpses/select`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -17,9 +17,13 @@ const ExquisiteCorpseSelection = () => {
         }
         fetchData();
     }, [])
+
     return (    
         <div>
-            
+            Select a poem:
+            {exquisiteCorpse.map((poem, key) =>
+                <div key={key}>{poem.title}</div>
+            )}
         </div>
     )
 };
