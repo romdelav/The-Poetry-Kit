@@ -10,6 +10,7 @@ import NavBar from './components/navbar';
 import NotFound from './components/notfound';
 import ExquisiteCorpseHistory from './pages/ExquisiteCorpseHistory';
 import ExquisiteCorpseSelection from './pages/ExquisiteCorpseSelection';
+import ExquisiteCorpse from './pages/ExquisiteCorpse';
 
 function App() {
     return ( 
@@ -23,12 +24,12 @@ function App() {
                         <Route path="/haikus/create/:themeID" component={HaikuLine} />
                         <Route path="/haikus/create" component={HaikuTheme} />
                         <Route path="/exquisite-corpses/history" component={ExquisiteCorpseHistory} />
+                        <Route path="/esquisite-corpses/select/:poemID" component={ExquisiteCorpse} />
                         <Route path="/exquisite-corpses/select" component={ExquisiteCorpseSelection} />
                         <Route path="/constrained-poems/history" component={ConstrainedPoemHistory} />
                         <Route path="/constrained-poems/create" component={ConstrainedPoemRule} />
                         <Route component={NotFound} />
                     </Switch>
-                    
                 </div>
             </div> 
         </Router>
