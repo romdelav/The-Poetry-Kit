@@ -76,6 +76,11 @@ app.route('/exquisite-corpses/select')
         res.send(JSON.stringify(getTitles(), null, 2))
     );
 
+app.route('/exquisite-corpses/select/:poemID')
+    .get((req, res) =>
+        res.send(JSON.stringify(getExquisiteCorpseLines(req.params.poemID), null, 2))
+    );
+
 app.route('/constrained-poems/history')
     .get((req, res) =>
         res.send(JSON.stringify(getConstrainedPoemHistory(), null, 2))
@@ -112,6 +117,11 @@ function getThemes() {
 function getTitles() {
     const themes = db.prepare('SELECT title FROM Poem WHERE typeID = 2').all();
     return themes;
+}
+
+function getExquisiteCorpseLines(poemID) {
+    const lines = db.prepare(`SELECT * FROM ExquisiteCorpse JOIN Poem_ExquisiteCorpse ON ExquisiteCorpse.exquisiteCorpseID = Poem_ExquisiteCorpse.exquisiteCorpseID JOIN Poem ON Poem_ExquisiteCorpse.poemID = Poem.poemID WHERE Poem.poemID = ${poemID}`).all();
+    return lines;
 }
 
 function getHaikuLines(themeID) {
