@@ -6,7 +6,7 @@ const ExquisiteCorpse = () => {
     
     useEffect(() => {
         const fetchData = async () => {
-            const result = await fetch(`http://localhost:4000/exquisite-corpses/:poemID`, {
+            const result = await fetch(`http://localhost:4000/exquisite-corpses/select/:poemID`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
