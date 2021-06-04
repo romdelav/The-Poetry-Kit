@@ -115,7 +115,7 @@ function getThemes() {
 }
 
 function getTitles() {
-    const themes = db.prepare('SELECT title FROM Poem WHERE typeID = 2').all();
+    const themes = db.prepare('SELECT * FROM Poem WHERE typeID = 2').all();
     return themes;
 }
 
