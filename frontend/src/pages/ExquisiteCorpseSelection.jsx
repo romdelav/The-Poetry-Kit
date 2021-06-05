@@ -1,4 +1,5 @@
 import {React, useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 
 const ExquisiteCorpseSelection = () => {
 
@@ -19,10 +20,11 @@ const ExquisiteCorpseSelection = () => {
     }, [])
 
     return (    
-        <div>
+        <div style={{textAlign: 'center'}}>
             Select a poem:
-            {exquisiteCorpse.map((poem, key) =>
-                <div key={key}>{poem.title}</div>
+            <br/><br/>
+            {exquisiteCorpse.map((poem) =>
+            <Link to={`/exquisite-corpses/select/${poem.poemID}`} key={poem.poemID}>{poem.title}</Link>
             )}
         </div>
     )
