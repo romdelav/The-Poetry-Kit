@@ -79,7 +79,19 @@ app.route('/exquisite-corpses/select')
 app.route('/exquisite-corpses/select/:poemID')
     .get((req, res) =>
         res.send(JSON.stringify(getExquisiteCorpseLines(req.params.poemID), null, 2))
-    );
+    )
+    .post((req, res) => {
+        console.log(req.body);
+        var poemID = req.params.poemID;
+        var line = req.body.line;
+        var username = req.body.username;
+
+        var statement = db.prepapre(`INSERT INTO ExquisiteCorpse (exquisiteCorpseLine, username, createdAt) VALUES (?, ?, ?)`);
+        statement.run(line, username, DateTime('now'));
+
+        var statement2 = db.prepare(`INSERT INTO Poem_ExquisiteCorpse (poemID, exquisiteCorpseID) VALUES (?, (SELECT exquisiteCorpseID FROM ExquisiteCorpse WHERE exquisiteCorpseLine = ?))`);
+        statement2.run(poemID, line);
+    });
 
 app.route('/constrained-poems/history')
     .get((req, res) =>
