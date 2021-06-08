@@ -39,13 +39,17 @@ const ExquisiteCorpse = ({match, setPoem}) => {
         <div>
             {exquisiteCorpse.map((poem) =>
             <div key={poem.exquisiteCorpseID}>
+                {poem.username} &nbsp;&nbsp;&nbsp;{poem.createdAt}
+                <br/>
                 {poem.exquisiteCorpseLine}
             </div>)}
             <br/><br/>
-            contribute:
+            Contribute
             <form>
-                <input type="text" value={username} onChange={(event) => setUsername(event.target.value)}></input>
+                Username: <input type="text" value={username} onChange={(event) => setUsername(event.target.value)}></input>
+                <br/>
                 <textarea placeholder="Your line..." value={line} onChange={(event) => setLine(event.target.value)}></textarea>
+                <br/>
                 <input type="submit" onClick={() => postLine()}></input>
             </form>
         </div>
