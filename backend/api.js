@@ -111,6 +111,11 @@ app.route('/constrained-poems/create')
         statement.run(text, description, 3);
     });
 
+app.route('/constrained-poems/:poemID')
+    .get((req, res) =>
+        res.send(JSON.stringify(getConstrainedPoem(req.params.poemID), null, 2))
+    );
+
 function getHaikuHistory() {
     const haikuHistory = db.prepare('SELECT * FROM History WHERE historyID = 1').all();
     return haikuHistory;
@@ -164,4 +169,9 @@ function getConstrainedPoemHistory() {
 function getRandomConstraint() {
     const randomConstraint = db.prepare('SELECT description FROM Rule ORDER BY RANDOM() LIMIT 1').get();
     return randomConstraint;
+}
+
+function getConstrainedPoem(poemID) {
+    const constrainedPoem = db.prepare(`SELECT * FROM Poem WHERE poemID = ${poemID} AND typeID = 3`).get();
+    return constrainedPoem;
 }
