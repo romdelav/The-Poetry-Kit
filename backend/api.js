@@ -117,7 +117,7 @@ function getHaikuHistory() {
 }
 
 function getHaiku(poemID) {
-    const haiku = db.prepare(`SELECT line FROM HaikuLine JOIN Poem_HaikuLine ON HaikuLine.haikuLineID = Poem_HaikuLine.haikuLineID JOIN Poem ON Poem_HaikuLine.poemID = Poem.poemID WHERE typeID = 1 AND Poem.poemID = ${poemID}`).all();
+    const haiku = db.prepare(`SELECT * FROM HaikuLine JOIN Poem_HaikuLine ON HaikuLine.haikuLineID = Poem_HaikuLine.haikuLineID JOIN Poem ON Poem_HaikuLine.poemID = Poem.poemID WHERE typeID = 1 AND Poem.poemID = ${poemID}`).all();
     return haiku;
 }
 
