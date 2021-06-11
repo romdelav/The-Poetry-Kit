@@ -21,10 +21,10 @@ function App() {
                 <div id="page-body">
                     <Switch>
                         <Route path="/" component={Home} exact />
-                        <Route path="/haikus/history" component={HaikuHistory} />
-                        <Route path="/haikus/my-haiku/:poemID" component={MyHaiku} />
                         <Route path="/haikus/create/:themeID" component={HaikuLine} />
                         <Route path="/haikus/create" component={HaikuTheme} />
+                        <Route path="/haikus/history" component={HaikuHistory} />
+                        <Route path="/haikus/my-haiku/:poemID" component={MyHaiku} />
                         <Route path="/exquisite-corpses/history" component={ExquisiteCorpseHistory} />
                         <Route path="/exquisite-corpses/select/:poemID" component={ExquisiteCorpse} />
                         <Route path="/exquisite-corpses/select" component={ExquisiteCorpseSelection} />
