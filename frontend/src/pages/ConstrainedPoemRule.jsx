@@ -19,17 +19,20 @@ const ConstrainedPoemRule = ({setPoem}) => {
     }, [])
 
     const [text, setText] = useState('');
+    const [title, setTitle] = useState('');
 
     const postPoem = async() => {
         const result = await fetch('http://localhost:4000/constrained-poems/create', {
             method: 'POST',
-            body: JSON.stringify({text, description}),
+            body: JSON.stringify({title, text, description}),
             headers: { 'Content-Type': 'application/json'}
         });
         const body = await result.json();
         setPoem(body);
+        setTitle('');
         setText('');
     }
+
 
     return(    
         <>
@@ -46,6 +49,9 @@ const ConstrainedPoemRule = ({setPoem}) => {
 
         <br/><br/><br/><br/>
         <form style={{textAlign:'center'}}>
+        <label>Title</label>
+            <input type="text" onChange={(event) => setTitle(event.target.value)}/>
+            <br/>
             <textarea placeholder="Your poem..." value={text} onChange={(event) => setText(event.target.value)}></textarea>
             <br/>
             <input type="submit" onClick={() => postPoem()}/>
