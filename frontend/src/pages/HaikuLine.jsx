@@ -47,24 +47,24 @@ const HaikuLine = ({match, setHaiku}) => {
             <input type="text" onChange={(event) => setTitle(event.target.value)}/>
             <br/>
             <h2>Select the first line</h2>
-            {haikuLine.haikuLine1.map((lines) => 
+            {haikuLine.haikuLine1.map((haiku) => 
             <div>
-                <input type="radio" name="line1" key={lines.haikuLineID} value={lines.line} onChange={(event) => setLine1(event.target.value)} />
-                <label>{lines.line}</label>
+                <input type="radio" name="line1" key={haiku.haikuLineID} value={haiku.line} onChange={(event) => setLine1(event.target.value)} />
+                <label>{haiku.line}</label>
             </div>)} 
             <br/>
             <h2>Select the second line</h2>
-            {haikuLine.haikuLine2.map((lines) => 
+            {haikuLine.haikuLine2.map((haiku) => 
             <div>
-                <input type="radio" name="line2" key={lines.haikuLineID} value={lines.line} onChange={(event) => setLine2(event.target.value)}/>
-                <label>{lines.line}</label>
+                <input type="radio" name="line2" key={haiku.haikuLineID} value={haiku.line} onChange={(event) => setLine2(event.target.value)}/>
+                <label>{haiku.line}</label>
             </div>)} 
             <br/>
             <h2>Select the third line</h2>
-            {haikuLine.haikuLine3.map((lines) => 
+            {haikuLine.haikuLine3.map((haiku) => 
             <div>
-                <input type="radio" name="line3" key={lines.haikuLineID} value={lines.line} onChange={(event) => setLine3(event.target.value)}/>
-                <label>{lines.line}</label>
+                <input type="radio" name="line3" key={haiku.haikuLineID} value={haiku.line} onChange={(event) => setLine3(event.target.value)}/>
+                <label>{haiku.line}</label>
             </div>)}  
             <input type="submit" onClick={() => postHaiku()}/>
         </form>
