@@ -104,11 +104,12 @@ app.route('/constrained-poems/create')
     )
     .post((req, res) => {
         console.log(req.body);
+        var title = req.body.title;
         var text = req.body.text;
         var description = req.body.description.description;
 
-        var statement = db.prepare(`INSERT INTO Poem (text, ruleID, typeID) VALUES (?, (SELECT ruleID FROM Rule WHERE description = ?), ?)`);
-        statement.run(text, description, 3);
+        var statement = db.prepare(`INSERT INTO Poem (title, text, ruleID, typeID) VALUES (?, ?, (SELECT ruleID FROM Rule WHERE description = ?), ?)`);
+        statement.run(title, text, description, 3);
     });
 
 app.route('/constrained-poems/:poemID')
