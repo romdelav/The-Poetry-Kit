@@ -39,6 +39,8 @@ const ExquisiteCorpse = ({match, setPoem}) => {
         <div>
             {exquisiteCorpse.map((poem) =>
             <div key={poem.exquisiteCorpseID}>
+                {poem.title}
+                <br/><br/><br/>
                 {poem.username} &nbsp;&nbsp;&nbsp;{poem.createdAt}
                 <br/>
                 {poem.exquisiteCorpseLine}
