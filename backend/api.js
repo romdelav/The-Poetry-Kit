@@ -173,6 +173,6 @@ function getRandomConstraint() {
 }
 
 function getConstrainedPoem(poemID) {
-    const constrainedPoem = db.prepare(`SELECT * FROM Poem WHERE poemID = ${poemID} AND typeID = 3`).get();
+    const constrainedPoem = db.prepare(`SELECT title, text FROM Poem WHERE poemID = ${poemID} AND typeID = 3`).get();
     return constrainedPoem;
 }
