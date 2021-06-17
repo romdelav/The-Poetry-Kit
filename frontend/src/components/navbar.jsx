@@ -22,7 +22,6 @@ const NavBar = () => (
                 <button className="navbar-button">Exquisite Corpses</button>
                 <div className="dropdown-content">
                     <Link to="/exquisite-corpses/history">History</Link>
-                    <Link to="/exquisite-corpses/popular">Popular Exquisite Corpses</Link>
                     <Link to="/exquisite-corpses/select">Contribute to an Exquisite Corpse</Link>
                 </div>
             </li>
@@ -30,7 +29,7 @@ const NavBar = () => (
             <button className="navbar-button">Constrained Poems</button>
             <div className="dropdown-content">
                     <Link to="/constrained-poems/history">History</Link>
-                    <Link to="/constrained-poems/popular">Popular Constrained Poems</Link>
+                    <Link to="/constrained-poems/popular">View Constrained Poems</Link>
                     <Link to="/constrained-poems/create">Create a Constained Poem</Link>
                 </div>
             </li>
