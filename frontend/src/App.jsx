@@ -7,6 +7,7 @@ import HaikuLine from './pages/HaikuLine';
 import MyHaiku from './pages/MyHaiku';
 import ConstrainedPoemHistory from './pages/ConstrainedPoemHistory';
 import ConstrainedPoemRule from './pages/ConstrainedPoemRule';
+import ConstrainedPoemByRuleID from './pages/ConstrainedPoemByRuleID';
 import ConstrainedPoem from './pages/ConstrainedPoem';
 import NavBar from './components/navbar';
 import NotFound from './components/notfound';
@@ -31,6 +32,7 @@ function App() {
                         <Route path="/exquisite-corpses/select" component={ExquisiteCorpseSelection} />
                         <Route path="/constrained-poems/history" component={ConstrainedPoemHistory} />
                         <Route path ="/constrained-poems/:poemID" component={ConstrainedPoem} />
+                        <Route path="/constrained-poems/rules/:ruleID" component={ConstrainedPoemByRuleID} />
                         <Route path="/constrained-poems/create" component={ConstrainedPoemRule} />
                         <Route component={NotFound} />
                     </Switch>
