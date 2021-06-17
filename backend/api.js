@@ -183,6 +183,6 @@ function getConstrainedPoemByPoemID(poemID) {
 }
 
 function getConstrainedPoemByRuleID(ruleID) {
-    const constrainedPoem = db.prepare(`SELECT title, text FROM Poem WHERE ruleID = ${ruleID} AND typeID = 3`).get();
+    const constrainedPoem = db.prepare(`SELECT * FROM Poem WHERE ruleID = ${ruleID} AND typeID = 3`).get();
     return constrainedPoem;
 }
