@@ -23,9 +23,9 @@ const MyHaiku = ({match}) => {
     return (
         <>
         {haiku.map((poem) =>
-            <div key={poem.haikuLineID}>
-                {poem.line}
-            </div>)}    
+        <div key={poem.haikuLineID}>
+            {poem.line}
+        </div>)}    
         </>
     )
 };

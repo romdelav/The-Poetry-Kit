@@ -17,6 +17,7 @@ const HaikuHistory = () => {
         }
         fetchData();
     }, [])
+    
     return (    
         <div>
             <br/><br/><br/><br/>
