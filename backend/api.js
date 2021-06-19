@@ -117,9 +117,9 @@ app.route('/constrained-poems/:poemID')
         res.send(JSON.stringify(getConstrainedPoemByPoemID(req.params.poemID), null, 2))
     );
 
-app.route('/constrained-poems/rules/:ruleID')
+app.route('/constrained-poems')
     .get((req, res) =>
-        res.send(JSON.stringify(getConstrainedPoemByRuleID(req.params.ruleID), null, 2))
+        res.send(JSON.stringify(getAllConstrainedPoems(), null, 2))
     );
 
 function getHaikuHistory() {
@@ -182,7 +182,7 @@ function getConstrainedPoemByPoemID(poemID) {
     return constrainedPoem;
 }
 
-function getConstrainedPoemByRuleID(ruleID) {
-    const constrainedPoem = db.prepare(`SELECT * FROM Poem WHERE ruleID = ${ruleID} AND typeID = 3`).get();
-    return constrainedPoem;
+function getAllConstrainedPoems() {
+    const constrainedPoems = db.prepare(`SELECT Poem.poemID, Poem.text, Poem.title, Rule.ruleID, Rule.description FROM Poem JOIN Rule ON Poem.ruleID = Rule.ruleID WHERE typeID = 3`).all();
+    return constrainedPoems;
 }
