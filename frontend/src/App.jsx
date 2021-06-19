@@ -32,7 +32,7 @@ function App() {
                         <Route path="/exquisite-corpses/select" component={ExquisiteCorpseSelection} />
                         <Route path="/constrained-poems/history" component={ConstrainedPoemHistory} />
                         <Route path ="/constrained-poems/:poemID" component={ConstrainedPoem} />
-                        <Route path="/constrained-poems/rules/:ruleID" component={ConstrainedPoemByRuleID} />
+                        <Route path="/constrained-poems" component={ConstrainedPoemByRuleID} />
                         <Route path="/constrained-poems/create" component={ConstrainedPoemRule} />
                         <Route component={NotFound} />
                     </Switch>
