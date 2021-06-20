@@ -183,6 +183,6 @@ function getConstrainedPoemByPoemID(poemID) {
 }
 
 function getAllConstrainedPoems() {
-    const constrainedPoems = db.prepare(`SELECT Poem.poemID, Poem.text, Poem.title, Rule.ruleID, Rule.description FROM Poem JOIN Rule ON Poem.ruleID = Rule.ruleID WHERE typeID = 3`).all();
+    const constrainedPoems = db.prepare(`SELECT Poem.poemID, Poem.text, Poem.title, Rule.ruleID, Rule.description FROM Poem JOIN Rule ON Poem.ruleID = Rule.ruleID WHERE typeID = 3 ORDER BY RANDOM() LIMIT 10`).all();
     return constrainedPoems;
 }
