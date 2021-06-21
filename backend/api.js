@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
+const { title } = require('process');
 
 const dbConnection = path.join(__dirname + '/database/Poetry_Kit.db');
 console.log(dbConnection);
@@ -66,6 +67,11 @@ app.route('/haikus/create/:themeID')
         statement7.run(line3, 3, themeID);
     });
 
+app.route('/haikus/titles')
+    .get((req, res) =>
+        res.send(JSON.stringify(getHaikuTitles(), null, 2))
+    )
+
 app.route('/exquisite-corpses/history')
     .get((req, res) =>
         res.send(JSON.stringify(getExquisiteCorpseHistory(), null, 2))
@@ -119,7 +125,7 @@ app.route('/constrained-poems/:poemID')
 
 app.route('/constrained-poems')
     .get((req, res) =>
-        res.send(JSON.stringify(getAllConstrainedPoems(), null, 2))
+        res.send(JSON.stringify(getConstrainedPoems(), null, 2))
     );
 
 function getHaikuHistory() {
@@ -182,7 +188,12 @@ function getConstrainedPoemByPoemID(poemID) {
     return constrainedPoem;
 }
 
-function getAllConstrainedPoems() {
+function getConstrainedPoems() {
     const constrainedPoems = db.prepare(`SELECT Poem.poemID, Poem.text, Poem.title, Rule.ruleID, Rule.description FROM Poem JOIN Rule ON Poem.ruleID = Rule.ruleID WHERE typeID = 3 ORDER BY RANDOM() LIMIT 10`).all();
     return constrainedPoems;
+}
+
+function getHaikuTitles() {
+    const titles = db.prepare('SELECT poemID, title FROM Poem WHERE typeID = 1').all();
+    return titles;
 }
