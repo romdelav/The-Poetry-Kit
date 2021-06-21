@@ -72,6 +72,11 @@ app.route('/haikus/titles')
         res.send(JSON.stringify(getHaikuTitles(), null, 2))
     )
 
+app.route('/haikus/titles/:poemID')
+    .get((req, res) =>
+        res.send(JSON.stringify(getHaiku(req.params.poemID), null, 2))
+    );
+
 app.route('/exquisite-corpses/history')
     .get((req, res) =>
         res.send(JSON.stringify(getExquisiteCorpseHistory(), null, 2))
