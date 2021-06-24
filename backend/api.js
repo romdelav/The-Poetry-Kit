@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
-const { title } = require('process');
 
 const dbConnection = path.join(__dirname + '/database/Poetry_Kit.db');
 console.log(dbConnection);
@@ -30,7 +29,7 @@ app.route('/haikus/my-haiku/:poemID')
 
 app.route('/haikus/create')
     .get((req, res) =>
-        res.send(JSON.stringify(getThemes(), null, 2))
+        res.send(JSON.stringify(getHaikuThemes(), null, 2))
     );
 
 app.route('/haikus/create/:themeID')
@@ -84,7 +83,7 @@ app.route('/exquisite-corpses/history')
 
 app.route('/exquisite-corpses/select')
     .get((req, res) =>
-        res.send(JSON.stringify(getTitles(), null, 2))
+        res.send(JSON.stringify(getExquisiteCorpseTitles(), null, 2))
     );
 
 app.route('/exquisite-corpses/select/:poemID')
@@ -143,19 +142,19 @@ function getHaiku(poemID) {
     return haiku;
 }
 
-function getThemes() {
+function getHaikuThemes() {
     const titles = db.prepare('SELECT * FROM Themes').all();
     return titles;
 }
 
-function getTitles() {
+function getExquisiteCorpseTitles() {
     const themes = db.prepare('SELECT * FROM Poem WHERE typeID = 2').all();
     return themes;
 }
 
-function getExquisiteCorpseLines(poemID) {
-    const lines = db.prepare(`SELECT * FROM ExquisiteCorpse JOIN Poem_ExquisiteCorpse ON ExquisiteCorpse.exquisiteCorpseID = Poem_ExquisiteCorpse.exquisiteCorpseID JOIN Poem ON Poem_ExquisiteCorpse.poemID = Poem.poemID WHERE Poem.poemID = ${poemID}`).all();
-    return lines;
+function getHaikuTitles() {
+    const titles = db.prepare('SELECT poemID, title FROM Poem WHERE typeID = 1').all();
+    return titles;
 }
 
 function getHaikuLines(themeID) {
@@ -171,6 +170,11 @@ function getHaikuLines(themeID) {
     haikuLines.haikuLine3 = line3;
 
     return haikuLines;
+}
+
+function getExquisiteCorpseLines(poemID) {
+    const lines = db.prepare(`SELECT * FROM ExquisiteCorpse JOIN Poem_ExquisiteCorpse ON ExquisiteCorpse.exquisiteCorpseID = Poem_ExquisiteCorpse.exquisiteCorpseID JOIN Poem ON Poem_ExquisiteCorpse.poemID = Poem.poemID WHERE Poem.poemID = ${poemID}`).all();
+    return lines;
 }
 
 function getExquisiteCorpseHistory() {
@@ -196,9 +200,4 @@ function getConstrainedPoemByPoemID(poemID) {
 function getConstrainedPoems() {
     const constrainedPoems = db.prepare(`SELECT Poem.poemID, Poem.text, Poem.title, Rule.ruleID, Rule.description FROM Poem JOIN Rule ON Poem.ruleID = Rule.ruleID WHERE typeID = 3 ORDER BY RANDOM() LIMIT 10`).all();
     return constrainedPoems;
-}
-
-function getHaikuTitles() {
-    const titles = db.prepare('SELECT poemID, title FROM Poem WHERE typeID = 1').all();
-    return titles;
 }
