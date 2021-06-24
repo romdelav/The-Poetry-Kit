@@ -22,7 +22,7 @@ app.route('/haikus/history')
         res.send(JSON.stringify(getHaikuHistory(), null, 2))
     );
 
-app.route('/haikus/my-haiku/:poemID')
+app.route('/haikus/:poemID')
     .get((req, res) =>
         res.send(JSON.stringify(getHaiku(req.params.poemID), null, 2))
     );

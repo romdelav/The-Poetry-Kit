@@ -28,7 +28,7 @@ function App() {
                         <Route path="/haikus/create" component={HaikuTheme} />
                         <Route path="/haikus/history" component={HaikuHistory} />
                         <Route path="/haikus/titles" component={HaikuTitle} />
-                        <Route path="/haikus/my-haiku/:poemID" component={MyHaiku} />
+                        <Route path="/haikus/:poemID" component={MyHaiku} />
                         <Route path="/exquisite-corpses/history" component={ExquisiteCorpseHistory} />
                         <Route path="/exquisite-corpses/select/:poemID" component={ExquisiteCorpse} />
                         <Route path="/exquisite-corpses/select" component={ExquisiteCorpseSelection} />
