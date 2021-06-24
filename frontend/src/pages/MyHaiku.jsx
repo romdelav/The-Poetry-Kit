@@ -8,7 +8,7 @@ const MyHaiku = ({match}) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await fetch(`http://localhost:4000/haikus/${poemID}`, {
+            const result = await fetch(`http://localhost:4000/haikus/my-haiku/${poemID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
