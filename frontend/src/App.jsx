@@ -5,6 +5,7 @@ import HaikuHistory from './pages/HaikuHistory';
 import HaikuTheme from './pages/HaikuTheme';
 import HaikuLine from './pages/HaikuLine';
 import MyHaiku from './pages/MyHaiku';
+import Haiku from './pages/Haiku';
 import HaikuTitle from './pages/HaikuTitle';
 import ConstrainedPoemHistory from './pages/ConstrainedPoemHistory';
 import ConstrainedPoemRule from './pages/ConstrainedPoemRule';
@@ -27,6 +28,7 @@ function App() {
                         <Route path="/haikus/create/:themeID" component={HaikuLine} />
                         <Route path="/haikus/create" component={HaikuTheme} />
                         <Route path="/haikus/history" component={HaikuHistory} />
+                        <Route path="/haikus/titles/:poemID" component={Haiku} />
                         <Route path="/haikus/titles" component={HaikuTitle} />
                         <Route path="/haikus/:poemID" component={MyHaiku} />
                         <Route path="/exquisite-corpses/history" component={ExquisiteCorpseHistory} />
