@@ -27,6 +27,11 @@ app.route('/haikus/:poemID')
         res.send(JSON.stringify(getHaiku(req.params.poemID), null, 2))
     );
 
+app.route('/haikus/themes')
+    .get((req, res) =>
+        res.send(JSON.stringify(getHaikuThemes(), null, 2))
+    );
+
 app.route('/haikus/themes/:themeID')
     .get((req, res) =>
         res.send(JSON.stringify(getHaikuLines(req.params.themeID), null, 2))
@@ -69,11 +74,6 @@ app.route('/haikus/titles')
 app.route('/haikus/titles/:poemID')
     .get((req, res) =>
         res.send(JSON.stringify(getHaiku(req.params.poemID), null, 2))
-    );
-
-app.route('/haikus/themes')
-    .get((req, res) =>
-        res.send(JSON.stringify(getHaikuThemes(), null, 2))
     );
 
 app.route('/exquisite-corpses/history')
@@ -142,9 +142,10 @@ function getHaiku(poemID) {
     return haiku;
 }
 
+
 function getHaikuThemes() {
-    const themes = db.prepare('SELECT * FROM Themes').all();
-    return themes;
+    const haikuThemes = db.prepare('SELECT * FROM Themes').all();
+    return haikuThemes;
 }
 
 function getExquisiteCorpseTitles() {
@@ -173,8 +174,8 @@ function getHaikuLines(themeID) {
 }
 
 function getExquisiteCorpseLines(poemID) {
-    const lines = db.prepare(`SELECT * FROM ExquisiteCorpse JOIN Poem_ExquisiteCorpse ON ExquisiteCorpse.exquisiteCorpseID = Poem_ExquisiteCorpse.exquisiteCorpseID JOIN Poem ON Poem_ExquisiteCorpse.poemID = Poem.poemID WHERE Poem.poemID = ${poemID}`).all();
-    return lines;
+    const exquisiteCorpseLines = db.prepare(`SELECT * FROM ExquisiteCorpse JOIN Poem_ExquisiteCorpse ON ExquisiteCorpse.exquisiteCorpseID = Poem_ExquisiteCorpse.exquisiteCorpseID JOIN Poem ON Poem_ExquisiteCorpse.poemID = Poem.poemID WHERE Poem.poemID = ${poemID}`).all();
+    return exquisiteCorpseLines;
 }
 
 function getExquisiteCorpseHistory() {
