@@ -27,12 +27,7 @@ app.route('/haikus/:poemID')
         res.send(JSON.stringify(getHaiku(req.params.poemID), null, 2))
     );
 
-app.route('/haikus/create')
-    .get((req, res) =>
-        res.send(JSON.stringify(getHaikuThemes(), null, 2))
-    );
-
-app.route('/haikus/create/:themeID')
+app.route('/haikus/themes/:themeID')
     .get((req, res) =>
         res.send(JSON.stringify(getHaikuLines(req.params.themeID), null, 2))
     )
@@ -74,6 +69,11 @@ app.route('/haikus/titles')
 app.route('/haikus/titles/:poemID')
     .get((req, res) =>
         res.send(JSON.stringify(getHaiku(req.params.poemID), null, 2))
+    );
+
+app.route('/haikus/themes')
+    .get((req, res) =>
+        res.send(JSON.stringify(getHaikuThemes(), null, 2))
     );
 
 app.route('/exquisite-corpses/history')
@@ -143,18 +143,18 @@ function getHaiku(poemID) {
 }
 
 function getHaikuThemes() {
-    const titles = db.prepare('SELECT * FROM Themes').all();
-    return titles;
-}
-
-function getExquisiteCorpseTitles() {
-    const themes = db.prepare('SELECT * FROM Poem WHERE typeID = 2').all();
+    const themes = db.prepare('SELECT * FROM Themes').all();
     return themes;
 }
 
+function getExquisiteCorpseTitles() {
+    const exquisiteCorpseTitles = db.prepare('SELECT poemID, title FROM Poem WHERE typeID = 2').all();
+    return exquisiteCorpseTitles;
+}
+
 function getHaikuTitles() {
-    const titles = db.prepare('SELECT poemID, title FROM Poem WHERE typeID = 1').all();
-    return titles;
+    const haikuTitles = db.prepare('SELECT poemID, title FROM Poem WHERE typeID = 1').all();
+    return haikuTitles;
 }
 
 function getHaikuLines(themeID) {
@@ -178,13 +178,13 @@ function getExquisiteCorpseLines(poemID) {
 }
 
 function getExquisiteCorpseHistory() {
-    const haikuHistory = db.prepare('SELECT * FROM History WHERE historyID = 2').all();
-    return haikuHistory;
+    const exquisiteCorpseHistory = db.prepare('SELECT * FROM History WHERE historyID = 2').all();
+    return exquisiteCorpseHistory;
 }
 
 function getConstrainedPoemHistory() {
-    const haikuHistory = db.prepare('SELECT * FROM History WHERE historyID = 3').all();
-    return haikuHistory;
+    const constrainedPoemHistory = db.prepare('SELECT * FROM History WHERE historyID = 3').all();
+    return constrainedPoemHistory;
 }
 
 function getRandomConstraint() {
