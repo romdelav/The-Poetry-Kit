@@ -22,11 +22,6 @@ app.route('/haikus/history')
         res.send(JSON.stringify(getHaikuHistory(), null, 2))
     );
 
-app.route('/haikus/:poemID')
-    .get((req, res) =>
-        res.send(JSON.stringify(getHaiku(req.params.poemID), null, 2))
-    );
-
 app.route('/haikus/themes')
     .get((req, res) =>
         res.send(JSON.stringify(getHaikuThemes(), null, 2))
@@ -65,6 +60,11 @@ app.route('/haikus/themes/:themeID')
         var statement7 = db.prepare(`INSERT INTO HaikuLine(line, lineNumber, themeID) VALUES (?, ?, ?)`);
         statement7.run(line3, 3, themeID);
     });
+
+app.route('/haikus/:poemID')
+    .get((req, res) =>
+        res.send(JSON.stringify(getHaiku(req.params.poemID), null, 2))
+    );
 
 app.route('/haikus/titles')
     .get((req, res) =>
