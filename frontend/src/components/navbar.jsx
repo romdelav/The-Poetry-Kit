@@ -15,7 +15,7 @@ const NavBar = () => (
                 <div className="dropdown-content">
                     <Link to="/haikus/history">History</Link>
                     <Link to="/haikus/popular">Popular Haikus</Link>
-                    <Link to="/haikus/create">Create a Haiku</Link>
+                    <Link to="/haikus/themes">Create a Haiku</Link>
                 </div>
             </li>
             <li className="navbar">
