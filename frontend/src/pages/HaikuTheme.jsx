@@ -7,7 +7,7 @@ const HaikuTheme = () => {
     
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:4000/haikus/create', {
+            const response = await fetch('http://localhost:4000/haikus/themes', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -30,8 +30,8 @@ const HaikuTheme = () => {
         <br/><br/><br/><br/>
 
         <section style={{textAlign: 'center'}}>
-            {themeInfo.map((theme) => 
-            <Link to={`/haikus/create/${theme.themeID}`} key={theme.themeID} className="theme-style">{theme.theme}</Link>)}
+            {themeInfo.map((theme, key) => 
+            <Link to={`/haikus/create/${theme.themeID}`} key={key} className="theme-style">{theme.theme}</Link>)}
         </section>
         </>
     )
