@@ -25,8 +25,8 @@ function App() {
                 <div id="page-body">
                     <Switch>
                         <Route path="/" component={Home} exact />
-                        <Route path="/haikus/create/:themeID" component={HaikuLine} />
-                        <Route path="/haikus/create" component={HaikuTheme} />
+                        <Route path="/haikus/themes/:themeID" component={HaikuLine} />
+                        <Route path="/haikus/themes" component={HaikuTheme} />
                         <Route path="/haikus/history" component={HaikuHistory} />
                         <Route path="/haikus/titles/:poemID" component={Haiku} />
                         <Route path="/haikus/titles" component={HaikuTitle} />
