@@ -8,7 +8,7 @@ const HaikuLine = ({match, setHaiku}) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await fetch(`http://localhost:4000/haikus/create/${themeID}`, {
+            const result = await fetch(`http://localhost:4000/haikus/themes/${themeID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ const HaikuLine = ({match, setHaiku}) => {
     const [line3, setLine3] = useState();
 
     const postHaiku = async() => {
-        const result = await fetch(`http://localhost:4000/haikus/create/${themeID}`, {
+        const result = await fetch(`http://localhost:4000/haikus/themes/${themeID}`, {
             method: 'POST',
             body: JSON.stringify({title, line1, line2, line3}),
             headers: { 'Content-Type': 'application/json'}
