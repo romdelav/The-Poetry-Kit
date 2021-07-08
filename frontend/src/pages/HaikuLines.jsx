@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 
-const HaikuLine = ({match, setHaiku}) => {
+const HaikuLines = ({match, setHaiku}) => {
 
     const themeID = match.params.themeID;
     
@@ -29,7 +29,7 @@ const HaikuLine = ({match, setHaiku}) => {
         const result = await fetch(`http://localhost:4000/haikus/themes/${themeID}`, {
             method: 'POST',
             body: JSON.stringify({title, line1, line2, line3}),
-            headers: { 'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json'},
         });
         const body = await result.json();
         setHaiku(body);
@@ -72,4 +72,4 @@ const HaikuLine = ({match, setHaiku}) => {
     )
 }
 
-export default HaikuLine;
+export default HaikuLines;

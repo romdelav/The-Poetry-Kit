@@ -3,7 +3,7 @@ import './App.css';
 import Home from './pages/Home';
 import HaikuHistory from './pages/HaikuHistory';
 import HaikuTheme from './pages/HaikuTheme';
-import HaikuLine from './pages/HaikuLine';
+import HaikuLines from './pages/HaikuLines';
 import MyHaiku from './pages/MyHaiku';
 import Haiku from './pages/Haiku';
 import HaikuTitle from './pages/HaikuTitle';
@@ -25,7 +25,7 @@ function App() {
                 <div id="page-body">
                     <Switch>
                         <Route path="/" component={Home} exact />
-                        <Route path="/haikus/themes/:themeID" component={HaikuLine} />
+                        <Route path="/haikus/themes/:themeID" component={HaikuLines} />
                         <Route path="/haikus/themes" component={HaikuTheme} />
                         <Route path="/haikus/history" component={HaikuHistory} />
                         <Route path="/haikus/titles/:poemID" component={Haiku} />
