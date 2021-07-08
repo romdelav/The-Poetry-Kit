@@ -31,7 +31,7 @@ const HaikuTheme = () => {
 
         <section style={{textAlign: 'center'}}>
             {themeInfo.map((theme, key) => 
-            <Link to={`/haikus/create/${theme.themeID}`} key={key} className="theme-style">{theme.theme}</Link>)}
+            <Link to={`/haikus/themes/${theme.themeID}`} key={key} className="theme-style">{theme.theme}</Link>)}
         </section>
         </>
     )
