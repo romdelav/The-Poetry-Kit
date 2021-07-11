@@ -36,7 +36,6 @@ const ConstrainedPoemRule = ({setPoem}) => {
     return(    
         <>
         <br/><br/><br/><br/><br/><br/>
-
         <section>
             {Object.values(description).map((rule, key) =>
             <div key={key} className="rule-style">
@@ -45,17 +44,19 @@ const ConstrainedPoemRule = ({setPoem}) => {
                 <br/><br/>
             </div>)}
         </section> 
-
+            
         <br/><br/><br/><br/>
-
+        
+        <section>
         <form style={{textAlign:'center'}}>
-            <label>Title</label>
-            <input type="text" onChange={(event) => setTitle(event.target.value)}/>
-            <br/><br/>
-            <textarea placeholder="Your poem..." value={text} onChange={(event) => setText(event.target.value)}></textarea>
-            <br/>
-            <input type="submit" onClick={() => postPoem()}/>
-        </form> 
+                <label>Title</label>
+                <input type="text" onChange={(event) => setTitle(event.target.value)}/>
+                <br/><br/>
+                <textarea placeholder="Your poem..." value={text} onChange={(event) => setText(event.target.value)}></textarea>
+                <br/>
+                <button type="submit" onClick={() => postPoem()}>Submit</button>
+            </form>
+        </section>
         </>
     )
 }
