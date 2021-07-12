@@ -49,8 +49,9 @@ const ConstrainedPoemRule = ({setPoem}) => {
         
         <section>
         <form style={{textAlign:'center'}}>
-                <label>Title</label>
-                <input type="text" onChange={(event) => setTitle(event.target.value)}/>
+                <label>Title
+                    <input type="text" onChange={(event) => setTitle(event.target.value)}/>
+                </label>
                 <br/><br/>
                 <textarea placeholder="Your poem..." value={text} onChange={(event) => setText(event.target.value)}></textarea>
                 <br/>
