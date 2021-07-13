@@ -30,7 +30,7 @@ const NavBar = () => (
             <div className="dropdown-content">
                     <Link to="/constrained-poems/history">History</Link>
                     <Link to="/constrained-poems">View Constrained Poems</Link>
-                    <Link to="/constrained-poems/create">Create a Constained Poem</Link>
+                    <Link to="/create-constrained-poems">Create a Constained Poem</Link>
                 </div>
             </li>
         </ul>

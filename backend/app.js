@@ -108,7 +108,7 @@ app.route('/constrained-poems/history')
         res.send(JSON.stringify(getConstrainedPoemHistory(), null, 2))
     );
 
-app.route('/constrained-poems/create')
+app.route('/create-constrained-poems')
     .get((req, res) =>
         res.send(JSON.stringify(getRandomConstraint(), null, 2))
     )

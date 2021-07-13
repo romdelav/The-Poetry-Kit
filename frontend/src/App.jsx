@@ -8,7 +8,7 @@ import MyHaiku from './pages/MyHaiku';
 import Haiku from './pages/Haiku';
 import HaikuTitle from './pages/HaikuTitle';
 import ConstrainedPoemHistory from './pages/ConstrainedPoemHistory';
-import ConstrainedPoemRule from './pages/ConstrainedPoemRule';
+import CreateConstrainedPoem from './pages/CreateConstrainedPoem';
 import ConstrainedPoems from './pages/ConstrainedPoems';
 import ConstrainedPoem from './pages/ConstrainedPoem';
 import NavBar from './components/navbar';
@@ -37,7 +37,7 @@ function App() {
                         <Route path="/constrained-poems/history" component={ConstrainedPoemHistory} />
                         <Route path ="/constrained-poems/:poemID" component={ConstrainedPoem} />
                         <Route path="/constrained-poems" component={ConstrainedPoems} />
-                        <Route path="/constrained-poems/create" component={ConstrainedPoemRule} />
+                        <Route path="/create-constrained-poems" component={CreateConstrainedPoem} />
                         <Route component={NotFound} />
                     </Switch>
                 </div>
